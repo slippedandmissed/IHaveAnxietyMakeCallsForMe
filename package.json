@@ -1,0 +1,26 @@
+{
+  "name": "ihaveanxietymakecallsforme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "cd frontend && ng build && cd ..",
+    "serve": "cd frontend && ng serve && cd ..",
+    "test": "cd frontend && ng test && cd ..",
+    "heroku-postbuild": "cd frontend && npm install --legacy-peer-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slippedandmissed/IHaveAnxietyMakeCallsForMe.git"
+  },
+  "author": "Morgan Saville",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slippedandmissed/IHaveAnxietyMakeCallsForMe/issues"
+  },
+  "homepage": "https://github.com/slippedandmissed/IHaveAnxietyMakeCallsForMe#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
