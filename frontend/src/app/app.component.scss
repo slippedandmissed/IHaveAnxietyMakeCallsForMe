@@ -1,0 +1,19 @@
+.content {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    > * {
+        width: 100%;
+    }
+
+    router {
+        overflow-x: auto;
+    }
+
+    app-copyright-bar {
+        margin-top: auto;
+    }
+}

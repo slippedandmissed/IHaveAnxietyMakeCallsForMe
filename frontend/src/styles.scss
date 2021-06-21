@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+    --light-purple: #F0D9E7;
+    --pink: #FF94CC;
+    --purple: #A239EA;
+    --dark-purple: #5C33F6;
+}
+
 html, body {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    margin : 0;
+    padding: 0;
 }
 
 * {
@@ -15,4 +24,12 @@ html, body {
 
 input::focus {
     outline: none;
+}
+
+body {
+    background-image: linear-gradient(-15deg, var(--light-purple), var(--pink));
+}
+
+p {
+    width: min(90%, 50ch);
 }

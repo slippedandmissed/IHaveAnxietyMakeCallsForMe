@@ -27,13 +27,16 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/cookieconsent/build/cookieconsent.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -90,13 +93,16 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/cookieconsent/build/cookieconsent.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
           }
         },
         "lint": {

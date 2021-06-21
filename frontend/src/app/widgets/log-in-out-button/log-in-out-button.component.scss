@@ -1,0 +1,33 @@
+#customBtn {
+    display: inline-flex;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-size: 1.5em;
+    padding: 0.2em 0;
+
+    > * {
+        margin: 0 0.4em;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+span.label {
+    font-family: serif;
+    font-weight: normal;
+}
+.icon {
+    max-height: 1.5em;
+    max-width: 1.5em;
+}
+
+.small-icon {
+    max-height: 1em;
+    max-width: 1em;
+}

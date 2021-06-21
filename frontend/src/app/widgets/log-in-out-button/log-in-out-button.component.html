@@ -1,0 +1,12 @@
+<div *ngIf="user.loggedIn">
+    <div id="customBtn" class="customGPlusSignIn" (click)="logout()">
+        <img referrerpolicy="no-referrer" [src]="user.picture" alt="" class="icon">
+        <span class="buttonText">Logout</span>
+    </div>
+</div>
+<div *ngIf="!user.loggedIn">
+    <div id="customBtn" class="customGPlusSignIn" (click)="login()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" alt="" class="small-icon">
+        <span class="buttonText">Login with Google</span>
+      </div>  
+</div>
