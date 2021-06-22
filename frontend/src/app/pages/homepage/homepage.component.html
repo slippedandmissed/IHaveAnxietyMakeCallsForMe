@@ -9,7 +9,7 @@
     <p>
         Maybe it's the collapse of society, but if I need to make another haircut appointment I'm going to cry.
     </p>
-    <p>
+    <p *ngIf="!user.loggedIn">
         Log in to get started!
     </p>
     <app-log-in-out-button></app-log-in-out-button>
