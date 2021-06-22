@@ -1,0 +1,10 @@
+<div class="blocker" [ngClass]="{enabled: enabled}" (click)="close()">
+    <div class="popup" (click)="$event.stopPropagation()">
+        <div class="header">
+            <fa-icon [icon]="faTimes" (click)="close()" class="close"></fa-icon>
+        </div>
+        <div class="content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+
+<main>
+    <div class="column">
+        <h2>Things I've Asked For</h2>
+        <div class="posts">
+            <div *ngFor="let post of myPosts">
+                <div class="post-heading">
+                    <span class="post-title">{{post.title}}</span>
+                    <span class="posted-by">{{post.posted_by_name}}</span>
+                    <img class="posted-by-pic" alt="" [src]="post.posted_by_pic" />
+                </div>
+                <div class="post-body">
+                    {{post.description}}
+                </div>
+                <div class="post-body">
+                    {{post.onAccept}}
+                </div>
+                <div class="post-controls">
+                    <button class="delete" (click)="deletePost(post)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
+                </div>
+                <div class="post-offers" *ngIf="!post.awarded">
+                    <div>These people have offered to help. You can only accept one.</div>
+                    <div class="offer" *ngFor="let offer of post.accepted">
+                        <button (click)="accept(post, offer)">Accept</button>
+                        <span>{{offer.name}}</span>
+                        <img [src]="offer.pic" alt="">
+                    </div>
+                </div>
+                <div class="post-offers" *ngIf="post.awarded">
+                    <div>This is the person you selected to help.</div>
+                    <div class="offer">
+                        <span>{{post.awarded.name}}</span>
+                        <img [src]="post.awarded.pic" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="column">
+        <h2>Things I've Offered</h2>
+        <span>Posts won't show up here until the person who posted accepts your offer.</span>
+        <div class="posts">
+            <div *ngFor="let post of myOffered">
+                <div class="post-heading">
+                    <span class="post-title">{{post.title}}</span>
+                    <span class="posted-by">{{post.posted_by_name}}</span>
+                    <img class="posted-by-pic" alt="" [src]="post.posted_by_pic" />
+                </div>
+                <div class="post-body">
+                    {{post.description}}
+                </div>
+                <div class="post-body">
+                    {{post.onAccept}}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</main>

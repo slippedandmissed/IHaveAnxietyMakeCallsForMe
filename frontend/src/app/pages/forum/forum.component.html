@@ -1,1 +1,44 @@
-<p>forum works!</p>
+<button class="new-post" (click)="newPost=true">
+    <fa-icon [icon]="faPlus"></fa-icon>
+</button>
+<div class="posts">
+    <div *ngFor="let post of posts">
+        <div class="post-heading">
+            <span class="post-title">{{post.title}}</span>
+            <span class="posted-by">{{post.posted_by_name}}</span>
+            <img class="posted-by-pic" alt="" [src]="post.posted_by_pic" />
+        </div>
+        <div class="post-body">
+            {{post.description}}
+        </div>
+        <div class="post-controls" *ngIf="post.posted_by === user.sub">
+            <button class="delete" (click)="deletePost(post)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+        </div>
+        <div class="post-controls" *ngIf="post.posted_by !== user.sub">
+            <button class="accept" (click)="acceptPost(post)">
+                {{haveIAccepted(post) ? 'I\'ve offered to do that': 'I can do that!'}}
+            </button>
+        </div>
+    </div>
+</div>
+<app-popup [enabled]="newPost" (onClose)="newPost=false">
+    <div class="content">
+        <div class="title">
+            New Post
+        </div>
+        <div class="form">
+            <app-form-text-input (change)="changesMade=true" [(value)]="title" label="I would like you to..."
+                placeholder="Book me a restaurant reservation"></app-form-text-input>
+            <app-form-text-input (change)="changesMade=true" [multiline]="true" [(value)]="description"
+                label="Description"
+                placeholder="More information about what you need them to do. This might include a date/time, a country & area code, or any other details. Don't get too specific though, as this will be visible to anyone on the site.">
+            </app-form-text-input>
+            <app-form-text-input (change)="changesMade=true" [multiline]="true" [(value)]="onAccept" label="More info"
+                placeholder="This will only be visible after you accept someone's offer to complete the task for you. Nonetheless, be very careful not to give out personal information like your address, social security number, or payment details.">
+            </app-form-text-input>
+        </div>
+        <button [disabled]="!canBeSubmitted()" class="post" (click)="post()">Post</button>
+    </div>
+</app-popup>

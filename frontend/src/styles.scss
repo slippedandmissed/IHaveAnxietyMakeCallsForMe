@@ -9,10 +9,7 @@
 
 html, body {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     margin : 0;
     padding: 0;
 }
@@ -22,8 +19,17 @@ html, body {
     box-sizing: border-box;
 }
 
-input::focus {
-    outline: none;
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+input, textarea {
+    font-size: 1em;
+    width: 100%;
+    &::focus {
+        outline: none;
+
+    }
 }
 
 body {
@@ -33,3 +39,106 @@ body {
 p {
     width: min(90%, 50ch);
 }
+
+.posts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100vw;
+
+    > * {
+        background-color: var(--light-purple);
+        border: 1px solid black;
+        border-radius: 10px;
+        width: min(90%, 1000px);
+        font-size: 1.5em;
+        box-shadow: 0 0 4px 2px #00000040;
+
+        > * {
+            padding: 1em 3em;
+        }
+
+        .post-heading {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-bottom: 1px solid black;
+            @media screen and (max-width: 1000px) {
+                flex-direction: column;
+                text-align: center;
+
+                > :first-child {
+                    margin: 0 0 2em 0;
+                }
+            }
+
+            > :first-child {
+                margin-right: auto;
+                font-weight: bold;
+            }
+
+            .posted-by-pic {
+                height: 2.5em;
+                margin-left: 1em;
+                border-radius: 20px;
+            }
+        }
+
+        .post-controls {
+
+            button {
+                border: 1px solid black;
+                font-size: 1em;
+                transition: transform 0.2s ease;
+                padding: 0.2em 0.5em;
+                border-radius: 10px;
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            .delete {
+                color: white;
+                background-color: red;
+            }
+
+            .accept {
+                background-color: var(--dark-purple);
+                color: white;
+            }
+        }
+
+        .post-offers {
+            border-top: 1px solid black;
+
+            .offer {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                button {
+                    font-size: 1em;
+                    background-color: var(--dark-purple);
+                    color: white;
+                    border: 1px solid black;
+                    border-radius: 10px;
+                    padding: 0.2em 0.5em;
+                    margin-right: 1em;
+                    transition: transform 0.2s ease;
+                    &:hover {
+                        transform: scale(1.1);
+                    }    
+                }
+
+
+                img {
+                    height: 2em;
+                    border-radius: 20px;
+                    margin-left: 0.5em;
+                }
+            }
+        }
+    }
+}
+

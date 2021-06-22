@@ -13,6 +13,9 @@ import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { LogInOutButtonComponent } from './widgets/log-in-out-button/log-in-out-button.component';
 import { CopyrightBarComponent } from './widgets/copyright-bar/copyright-bar.component';
 import { ForumComponent } from './pages/forum/forum.component';
+import { PopupComponent } from './widgets/popup/popup.component';
+import { FormTextInputComponent } from './widgets/form-text-input/form-text-input.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -41,7 +44,10 @@ export function storageFactory(): OAuthStorage {
     NavbarComponent,
     LogInOutButtonComponent,
     CopyrightBarComponent,
-    ForumComponent
+    ForumComponent,
+    PopupComponent,
+    FormTextInputComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

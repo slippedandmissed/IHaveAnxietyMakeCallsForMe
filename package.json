@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/slippedandmissed/IHaveAnxietyMakeCallsForMe#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "google-auth-library": "^7.1.2",
+    "mongodb": "^3.6.9"
   }
 }
