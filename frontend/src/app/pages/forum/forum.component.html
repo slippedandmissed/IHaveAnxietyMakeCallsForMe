@@ -23,6 +23,13 @@
         </div>
     </div>
 </div>
+<div class="page-controls" *ngIf="pages > 1">
+    <fa-icon (click)="page=page-1" *ngIf="page > 0" [icon]="faChevronLeft"></fa-icon>
+    <span>
+        Page {{page+1}} of {{pages}}
+    </span>
+    <fa-icon (click)="page=page+1" *ngIf="page < pages-1" [icon]="faChevronRight"></fa-icon>
+</div>
 <app-popup [enabled]="newPost" (onClose)="newPost=false">
     <div class="content">
         <div class="title">

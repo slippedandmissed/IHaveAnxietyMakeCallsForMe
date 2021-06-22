@@ -53,3 +53,27 @@
 .posts >div {
     margin-top: 1em;
 }
+
+.page-controls {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 3em 0;
+    font-size: 1.5em;
+    >* {
+        margin: 0 1em;
+    }
+
+    >fa-icon {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+
+    >span {
+        font-weight: bold;
+    }
+}

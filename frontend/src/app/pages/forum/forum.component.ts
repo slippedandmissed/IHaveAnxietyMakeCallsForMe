@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from '../../services/api.service';
 import { ChangeableComponent, checkSaveChangesBeforeLeave } from '../../guards/changes-made.guard';
 import { UserDataService } from 'src/app/services/user-data.service';
@@ -49,6 +49,10 @@ export class ForumComponent implements OnInit, ChangeableComponent {
   }
 
   posts: Post[] = [];
+  pages: number = 1;
+
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
 
   canBeSubmitted(): boolean {
     return !!this.title && !!this.description && !!this.onAccept;
@@ -63,8 +67,14 @@ export class ForumComponent implements OnInit, ChangeableComponent {
     }
   }
 
-  ngOnInit(): void{
+  async ngOnInit(): Promise<void>{
     this.fetchPosts();
+    const response: any = await this.api.get("forum/pagecount", {});
+    if (response.err) {
+      console.error(response.err);
+    } else {
+      this.pages = response.count;
+    }
   }
 
   async post(): Promise<void> {

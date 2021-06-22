@@ -22,6 +22,20 @@ router.get("/allposts", requireLogin, (req, res) => {
 
 });
 
+router.get("/pagecount", requireLogin, async (req, res) => {
+
+    const collection = db.db.collection("posts");
+
+    try {
+        const count = await collection.countDocuments({ awarded: { $exists: false } });
+
+        res.json({ count: Math.ceil(count / RESULTS_PER_PAGE) });
+    } catch (e) {
+        res.json({ err: e });
+    }
+
+});
+
 router.get("/myposts", requireLogin, (req, res) => {
 
     const collection = db.db.collection("posts");
@@ -76,7 +90,6 @@ router.post("/post", requireLogin, async (req, res) => {
             description,
             onAccept
         });
-        console.log(result);
         res.json({ post: result.ops[0] });
         return;
     } catch {
