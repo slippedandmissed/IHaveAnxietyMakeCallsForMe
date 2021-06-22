@@ -12,7 +12,7 @@ router.get("/allposts", requireLogin, (req, res) => {
 
     const collection = db.db.collection("posts");
 
-    collection.find({ awarded: { $exists: false } }).project({ onAccept: 0 }).sort({ posted: 1 }).skip(page * RESULTS_PER_PAGE).limit(RESULTS_PER_PAGE).toArray((err, documents) => {
+    collection.find({ awarded: { $exists: false } }).project({ onAccept: 0 }).sort({ posted: -1 }).skip(page * RESULTS_PER_PAGE).limit(RESULTS_PER_PAGE).toArray((err, documents) => {
         if (err) {
             res.json({ err });
             return;
@@ -28,7 +28,7 @@ router.get("/myposts", requireLogin, (req, res) => {
 
     collection.find({
         posted_by: req.userid
-    }).sort({ posted: 1 }).toArray((err, documents) => {
+    }).sort({ posted: -1 }).toArray((err, documents) => {
         if (err) {
             res.json({ err });
             return;
@@ -44,7 +44,7 @@ router.get("/myoffered", requireLogin, (req, res) => {
 
     collection.find({
         "awarded.userid": req.userid
-    }).sort({ posted: 1 }).toArray((err, documents) => {
+    }).sort({ posted: -1 }).toArray((err, documents) => {
         if (err) {
             res.json({ err });
             return;
@@ -76,7 +76,8 @@ router.post("/post", requireLogin, async (req, res) => {
             description,
             onAccept
         });
-        res.json({ post: result });
+        console.log(result);
+        res.json({ post: result.ops[0] });
         return;
     } catch {
         res.json({ err: "Failed to post :(" });

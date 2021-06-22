@@ -99,7 +99,7 @@ export class ForumComponent implements OnInit, ChangeableComponent {
   }
 
   haveIAccepted(post: Post): boolean {
-    return !!this.user.sub && post.accepted.map(x => x.userid).includes(this.user.sub);
+    return !!this.user.sub && post.accepted && post.accepted.map(x => x.userid).includes(this.user.sub);
   }
 
   async acceptPost(post: Post) {

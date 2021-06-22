@@ -21,7 +21,8 @@
                     </button>
                 </div>
                 <div class="post-offers" *ngIf="!post.awarded">
-                    <div>These people have offered to help. You can only accept one.</div>
+                    <div *ngIf="post.accepted.length > 0">These people have offered to help. You can only accept one.</div>
+                    <div *ngIf="post.accepted.length === 0">Nobody has offered to help you with this yet. When they do, they'll appear here.</div>
                     <div class="offer" *ngFor="let offer of post.accepted">
                         <button (click)="accept(post, offer)">Accept</button>
                         <span>{{offer.name}}</span>
